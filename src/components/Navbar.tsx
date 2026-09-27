@@ -21,31 +21,32 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100 shadow-sm">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="flex items-center justify-between lg:justify-center h-24 relative">
+        <div className="flex items-center justify-between h-24">
           
-          {/* Mobile toggle (left side on mobile) */}
-          <button
-            className="lg:hidden p-2 text-gray-600 hover:text-gray-900 absolute left-0"
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-
-          {/* Desktop Left Nav */}
-          <nav className="hidden lg:flex items-center gap-10 absolute left-0">
-            {linksLeft.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-[15px] text-gray-600 font-bold hover:text-primary transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+          {/* Mobile toggle & Desktop Left Nav (flex-1 to center the logo) */}
+          <div className="flex-1 flex justify-start">
+            <button
+              className="lg:hidden p-2 -ml-2 text-gray-600 hover:text-gray-900"
+              onClick={() => setMobileOpen(!mobileOpen)}
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+            
+            <nav className="hidden lg:flex items-center gap-10">
+              {linksLeft.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-[15px] text-gray-600 font-bold hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
 
           {/* Centered Logo */}
-          <a href="#hero" className="flex flex-col flex-shrink-0 group items-center justify-center">
+          <a href="#hero" className="flex flex-col flex-shrink-0 group items-center justify-center px-4">
             <span className="font-sans text-2xl md:text-3xl font-black tracking-widest text-gray-900 group-hover:text-primary transition-colors uppercase">
               CLIMA 4S
             </span>
@@ -54,18 +55,22 @@ export default function Navbar() {
             </span>
           </a>
 
-          {/* Desktop Right Nav */}
-          <nav className="hidden lg:flex items-center gap-10 absolute right-0">
-            {linksRight.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-[15px] text-gray-600 font-bold hover:text-primary transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+          {/* Desktop Right Nav (flex-1 to balance the left side and keep logo centered) */}
+          <div className="flex-1 flex justify-end">
+            <nav className="hidden lg:flex items-center gap-10">
+              {linksRight.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-[15px] text-gray-600 font-bold hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+            {/* Invisible spacer on mobile to perfectly center the logo against the hamburger menu */}
+            <div className="lg:hidden w-6"></div>
+          </div>
 
         </div>
       </div>
