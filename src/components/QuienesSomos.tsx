@@ -24,7 +24,7 @@ const features = [
   }
 ]
 
-export default function PourquoiNous() {
+export default function QuienesSomos() {
   return (
     <section id="pourquoi-nous" className="py-24 bg-white relative overflow-hidden">
       {/* Imagen de fondo (marca de agua) */}

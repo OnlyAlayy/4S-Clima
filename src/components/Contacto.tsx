@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MapPin, Mail, User, Phone, Building, FileText, Send, CheckCircle2 } from 'lucide-react'
 
-export default function Soumission() {
+export default function Contacto() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {

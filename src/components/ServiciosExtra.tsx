@@ -22,7 +22,7 @@ const categories = [
   }
 ]
 
-export default function Depannage() {
+export default function ServiciosExtra() {
   return (
     <section id="depannage" className="py-24 bg-slate-50">
       <div className="max-w-[1200px] mx-auto px-6">

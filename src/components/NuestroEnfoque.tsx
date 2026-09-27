@@ -36,7 +36,7 @@ const symptoms = [
   }
 ]
 
-export default function Symptomes() {
+export default function NuestroEnfoque() {
   return (
     <section id="symptomes" className="py-24 bg-[#f0f9ff] relative overflow-hidden">
       {/* Fondo Decorativo y Marca de Agua */}

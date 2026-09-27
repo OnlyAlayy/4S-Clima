@@ -2,10 +2,10 @@ import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Services from './components/Services'
-import Depannage from './components/Depannage'
-import Symptomes from './components/Symptomes'
-import PourquoiNous from './components/PourquoiNous'
-import Soumission from './components/Soumission'
+import ServiciosExtra from './components/ServiciosExtra'
+import NuestroEnfoque from './components/NuestroEnfoque'
+import QuienesSomos from './components/QuienesSomos'
+import Contacto from './components/Contacto'
 import Footer from './components/Footer'
 
 export default function App() {
@@ -62,10 +62,10 @@ export default function App() {
       <main>
         <Hero />
         <Services />
-        <Depannage />
-        <Symptomes />
-        <PourquoiNous />
-        <Soumission />
+        <ServiciosExtra />
+        <NuestroEnfoque />
+        <QuienesSomos />
+        <Contacto />
       </main>
       <Footer />
       
