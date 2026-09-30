@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Services from './components/Services'
 import ServiciosExtra from './components/ServiciosExtra'
+import DuctosTextiles from './components/DuctosTextiles'
 import NuestroEnfoque from './components/NuestroEnfoque'
 import QuienesSomos from './components/QuienesSomos'
 import Contacto from './components/Contacto'
@@ -63,6 +64,7 @@ export default function App() {
         <Hero />
         <Services />
         <ServiciosExtra />
+        <DuctosTextiles />
         <NuestroEnfoque />
         <QuienesSomos />
         <Contacto />

@@ -92,7 +92,7 @@ export default function Services() {
         >
           <span className="font-display tracking-widest text-primary text-xs font-bold uppercase mb-4 flex items-center gap-4">
             <span className="w-4 h-[1px] bg-primary"></span>
-            SECTORES DE ESPECIALIZACIÓN
+            OBRAS
           </span>
           <h2 className="font-display font-bold text-4xl md:text-5xl text-gray-900 leading-tight">
             Obras a medida para mayor exigencia
