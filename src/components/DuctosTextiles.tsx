@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, ShieldCheck, Sparkles, Zap, Factory, Globe, Diamond, Flame, ZapOff } from 'lucide-react'
+import { ChevronLeft, ChevronRight, ShieldCheck, Sparkles, Factory, Globe, Diamond, Flame, ZapOff } from 'lucide-react'
 
 const slides = [
   {
