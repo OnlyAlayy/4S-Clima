@@ -125,7 +125,7 @@ export default function ServiciosExtra() {
               Mantenimiento
             </h3>
             <p className="font-sans text-gray-500 mb-8 leading-relaxed text-sm flex-grow">
-              Servicio preventivo y correctivo para distintos sistemas HVAC, gerenciado bajo la plataforma PROTECNUS.
+              Servicio preventivo y correctivo para distintos sistemas HVAC.
             </p>
             
             <a href="#soumission" className="inline-flex items-center gap-2 text-primary font-medium text-sm hover:text-primary-hover transition-colors mt-auto">
