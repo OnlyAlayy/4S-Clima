@@ -56,7 +56,7 @@ export default function ServiciosExtra() {
           >
             <div className="mb-6 flex flex-col items-center justify-center">
               <span className="font-sans font-bold text-gray-400 text-[10px] leading-tight tracking-widest uppercase">
-                CLIMA 4S
+                4S CLIMA
               </span>
               <span className="font-sans font-bold text-primary text-sm leading-tight tracking-widest uppercase mt-1">
                 HVAC
@@ -85,7 +85,7 @@ export default function ServiciosExtra() {
           >
             <div className="mb-6 flex flex-col items-center justify-center">
               <span className="font-sans font-bold text-gray-400 text-[10px] leading-tight tracking-widest uppercase">
-                CLIMA 4S
+                4S CLIMA
               </span>
               <span className="font-sans font-bold text-primary text-sm leading-tight tracking-widest uppercase mt-1">
                 FRÍO
@@ -114,7 +114,7 @@ export default function ServiciosExtra() {
           >
             <div className="mb-6 flex flex-col items-center justify-center">
               <span className="font-sans font-bold text-gray-400 text-[10px] leading-tight tracking-widest uppercase">
-                CLIMA 4S
+                4S CLIMA
               </span>
               <span className="font-sans font-bold text-primary text-sm leading-tight tracking-widest uppercase mt-1">
                 ABONOS
@@ -234,7 +234,7 @@ export default function ServiciosExtra() {
                 <img 
                   key={i}
                   src={`/Marcas/${marca}`}
-                  alt="Cliente CLIMA 4S"
+                  alt="Cliente 4S CLIMA"
                   className={`${baseImgClass} w-auto object-contain drop-shadow-sm transition-transform duration-300 ${scaleClass}`}
                 />
               )

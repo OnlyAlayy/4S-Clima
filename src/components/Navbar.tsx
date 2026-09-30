@@ -48,10 +48,7 @@ export default function Navbar() {
           {/* Centered Logo */}
           <a href="#hero" className="flex flex-col flex-shrink-0 group items-center justify-center px-4">
             <span className="font-sans text-2xl md:text-3xl font-black tracking-widest text-gray-900 group-hover:text-primary transition-colors uppercase">
-              CLIMA 4S
-            </span>
-            <span className="font-sans text-[9px] font-bold tracking-widest text-primary uppercase mt-1">
-              Alta Exigencia
+              4S CLIMA
             </span>
           </a>
 

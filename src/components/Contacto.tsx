@@ -216,7 +216,7 @@ export default function Contacto() {
                     </div>
                     <h3 className="font-display font-bold text-3xl text-gray-900 mb-4">¡Mensaje enviado!</h3>
                     <p className="text-gray-500 text-[15px] max-w-sm mb-8">
-                      Gracias por contactarse con CLIMA 4S. Un especialista de nuestro equipo de ingeniería se comunicará a la brevedad.
+                      Gracias por contactarse con 4S CLIMA. Un especialista de nuestro equipo de ingeniería se comunicará a la brevedad.
                     </p>
                     <button 
                       onClick={() => setIsSubmitted(false)}

@@ -23,7 +23,7 @@ export default function Footer() {
               
               <div className="flex flex-col text-center px-4">
                 <span className="font-sans text-2xl md:text-3xl font-black tracking-[0.2em] text-gray-700 uppercase">
-                  CLIMA 4S
+                  4S CLIMA
                 </span>
                 <span className="font-sans text-[10px] font-bold tracking-[0.3em] text-gray-400 uppercase mt-2">
                   Climatización
@@ -86,7 +86,7 @@ export default function Footer() {
                     <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Linkedin size={14} fill="currentColor" strokeWidth={0} />
                     </div>
-                    CLIMA 4S
+                    4S CLIMA
                   </a>
                 </li>
               </ul>
@@ -97,7 +97,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="pt-6 border-t border-gray-100/60 text-center text-[13px] text-gray-400">
-          <p>© {new Date().getFullYear()} CLIMA 4S, designed by 4S</p>
+          <p>© {new Date().getFullYear()} 4S CLIMA, designed by 4S</p>
         </div>
 
       </div>
