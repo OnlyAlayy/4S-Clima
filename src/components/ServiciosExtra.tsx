@@ -67,7 +67,7 @@ export default function ServiciosExtra() {
               Aire Acondicionado Central
             </h3>
             <p className="font-sans text-gray-500 mb-8 leading-relaxed text-sm flex-grow">
-              Manejan Chillers, Roof Top, sistemas DX en general y VRV, ofreciendo cobertura integral.
+              Chillers, Roof Top, sistemas DX en general y VRV, ofreciendo cobertura integral.
             </p>
             
             <a href="#soumission" className="inline-flex items-center gap-2 text-primary font-medium text-sm hover:text-primary-hover transition-colors mt-auto">

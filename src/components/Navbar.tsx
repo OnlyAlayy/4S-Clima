@@ -3,7 +3,8 @@ import { Menu, X, Phone } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const linksLeft = [
-  { label: 'Sectores', href: '#services' },
+  { label: 'Obras', href: '#services' },
+  { label: 'Ductos Textiles', href: '#ductos' },
   { label: 'Servicios', href: '#depannage' },
 ]
 
