@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const linksLeft = [
   { label: 'Obras', href: '#services' },
-  { label: 'Ductos Textiles', href: '#ductos' },
   { label: 'Servicios', href: '#depannage' },
+  { label: 'Ductos Textiles', href: '#ductos' },
 ]
 
 const linksRight = [

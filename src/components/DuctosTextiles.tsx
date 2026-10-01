@@ -45,7 +45,7 @@ const slides = [
     id: 3,
     title: "¿POR QUÉ DUCTOS TEXTILES?",
     subtitle: "PROPIEDADES TÉCNICAS SUPERIORES",
-    images: [], // Sin imagen según la descripción del cliente
+    images: ["/Secciones/quirofano.jpg"],
     content: (
       <ul className="space-y-5 text-base text-gray-600">
         <li className="flex gap-4 items-start">

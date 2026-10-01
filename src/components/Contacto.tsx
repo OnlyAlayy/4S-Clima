@@ -54,7 +54,7 @@ export default function Contacto() {
                   </span>
                   <p className="text-gray-900 font-medium text-[15px] leading-relaxed">
                     Av. Córdoba 1432 8B,<br />
-                    CABA, Argentina
+                    CABA, Buenos Aires
                   </p>
                 </div>
               </div>
