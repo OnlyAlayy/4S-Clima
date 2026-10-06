@@ -54,21 +54,18 @@ function ImageCarousel({ images, title }: { images: string[], title: string }) {
     }
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length)
-    }, 4000) // Cambia cada 4 segundos
+    }, 4000)
     return () => clearInterval(interval)
   }, [images])
 
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden bg-gray-100">
+    <div className="absolute inset-0 w-full h-full overflow-hidden bg-gray-100 isolate transform-gpu">
       {images.map((src, i) => (
-        <motion.img
+        <img
           key={src}
           src={src}
           alt={`${title} - ${i + 1}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: currentIndex === i ? 1 : 0 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0 w-full h-full object-cover"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${currentIndex === i ? 'opacity-100' : 'opacity-0'}`}
         />
       ))}
     </div>
