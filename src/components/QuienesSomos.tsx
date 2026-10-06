@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ShieldCheck, Sparkles, Clock, FileText, Award } from 'lucide-react'
 
 const features = [
@@ -25,6 +26,16 @@ const features = [
 ]
 
 export default function QuienesSomos() {
+  const [currentImage, setCurrentImage] = useState(0)
+  const rotatingImages = ['/Decoracion/decore1.jpg', '/Decoracion/decore2.jpg']
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % rotatingImages.length)
+    }, 4500)
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <section id="pourquoi-nous" className="py-24 bg-white relative overflow-hidden">
       {/* Imagen de fondo (marca de agua) */}
@@ -64,20 +75,27 @@ export default function QuienesSomos() {
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 1.2, type: "spring", bounce: 0.2 }}
           >
-            {/* Main Image */}
-            <div className="relative h-[450px] md:h-[550px] w-[85%] rounded-3xl overflow-hidden shadow-2xl">
-              <img 
-                src="/Decoracion/decore1.jpg" 
-                alt="Ingeniería y Diseño"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            {/* Main Image Carousel */}
+            <div className="relative h-[450px] md:h-[550px] w-[85%] rounded-3xl overflow-hidden shadow-2xl bg-gray-100">
+              <AnimatePresence mode="wait">
+                <motion.img 
+                  key={currentImage}
+                  src={rotatingImages[currentImage]}
+                  alt="Proyectos a Medida"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1.2 }}
+                />
+              </AnimatePresence>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10 pointer-events-none"></div>
             </div>
 
             {/* Secondary Image Overlapping */}
-            <div className="absolute top-[10%] right-0 w-[50%] h-[250px] md:h-[300px] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] border-8 border-white">
+            <div className="absolute top-[10%] right-0 w-[50%] h-[250px] md:h-[300px] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] border-8 border-white z-20">
               <img 
-                src="/Decoracion/decore2.jpg" 
+                src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop" 
                 alt="Instalaciones HVAC"
                 className="w-full h-full object-cover"
               />
