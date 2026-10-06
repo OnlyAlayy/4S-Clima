@@ -66,11 +66,11 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:info@4sclima.com.ar" className="flex items-center gap-4 text-gray-500 hover:text-primary transition-colors text-sm group">
+                  <a href="mailto:contacto@cuatroeseclima.com" className="flex items-center gap-4 text-gray-500 hover:text-primary transition-colors text-sm group">
                     <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Mail size={14} fill="currentColor" strokeWidth={0} />
                     </div>
-                    info@4sclima.com.ar
+                    contacto@cuatroeseclima.com
                   </a>
                 </li>
                 <li>

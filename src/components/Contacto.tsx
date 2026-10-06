@@ -67,8 +67,8 @@ export default function Contacto() {
                   <span className="font-display tracking-widest text-gray-400 text-[11px] font-bold uppercase block mb-2">
                     CONTACTO DIRECTO
                   </span>
-                  <a href="mailto:info@4sclima.com.ar" className="text-gray-900 font-medium text-[15px] hover:text-primary transition-colors block mt-1">
-                    info@4sclima.com.ar
+                  <a href="mailto:contacto@cuatroeseclima.com" className="text-gray-900 font-medium text-[15px] hover:text-primary transition-colors block mt-1">
+                    contacto@cuatroeseclima.com
                   </a>
                 </div>
               </div>
