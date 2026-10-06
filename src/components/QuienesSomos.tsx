@@ -77,16 +77,16 @@ export default function QuienesSomos() {
           >
             {/* Main Image Carousel */}
             <div className="relative h-[450px] md:h-[550px] w-[85%] rounded-3xl overflow-hidden shadow-2xl bg-gray-100">
-              <AnimatePresence mode="wait">
+              <AnimatePresence>
                 <motion.img 
                   key={currentImage}
                   src={rotatingImages[currentImage]}
                   alt="Proyectos a Medida"
                   className="absolute inset-0 w-full h-full object-cover"
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 1.2 }}
+                  transition={{ duration: 1.5, ease: "easeInOut" }}
                 />
               </AnimatePresence>
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10 pointer-events-none"></div>
@@ -102,7 +102,7 @@ export default function QuienesSomos() {
             </div>
             
             {/* Floating Glassmorphism Badge */}
-            <div className="absolute -bottom-10 right-[5%] md:right-[15%] bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white max-w-[280px] flex items-center gap-4 transform hover:-translate-y-2 transition-transform duration-300">
+            <div className="absolute -bottom-10 right-[5%] md:right-[15%] bg-white p-5 rounded-2xl shadow-xl border border-gray-100 max-w-[280px] flex items-center gap-4 transform hover:-translate-y-2 transition-transform duration-300 z-30">
               <div className="bg-gradient-to-br from-primary to-[#088c8b] text-white p-3 rounded-xl flex-shrink-0 shadow-lg">
                 <Award size={24} />
               </div>
