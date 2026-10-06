@@ -67,7 +67,7 @@ export default function QuienesSomos() {
             {/* Main Image */}
             <div className="relative h-[450px] md:h-[550px] w-[85%] rounded-3xl overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070&auto=format&fit=crop" 
+                src="/Decoracion/decore1.jpg" 
                 alt="Ingeniería y Diseño"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -77,7 +77,7 @@ export default function QuienesSomos() {
             {/* Secondary Image Overlapping */}
             <div className="absolute top-[10%] right-0 w-[50%] h-[250px] md:h-[300px] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] border-8 border-white">
               <img 
-                src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop" 
+                src="/Decoracion/decore2.jpg" 
                 alt="Instalaciones HVAC"
                 className="w-full h-full object-cover"
               />
