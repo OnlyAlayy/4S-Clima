@@ -76,7 +76,7 @@ export default function QuienesSomos() {
             transition={{ duration: 1.2, type: "spring", bounce: 0.2 }}
           >
             {/* Main Image Carousel */}
-            <div className="relative h-[450px] md:h-[550px] w-[85%] rounded-3xl overflow-hidden shadow-2xl bg-gray-100">
+            <div className="relative h-[450px] md:h-[550px] w-[85%] rounded-3xl overflow-hidden shadow-2xl bg-gray-100 isolate transform-gpu">
               <AnimatePresence>
                 <motion.img 
                   key={currentImage}
