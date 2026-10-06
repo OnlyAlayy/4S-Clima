@@ -77,18 +77,14 @@ export default function QuienesSomos() {
           >
             {/* Main Image Carousel */}
             <div className="relative h-[450px] md:h-[550px] w-[85%] rounded-3xl overflow-hidden shadow-2xl bg-gray-100 isolate transform-gpu">
-              <AnimatePresence>
-                <motion.img 
-                  key={currentImage}
-                  src={rotatingImages[currentImage]}
+              {rotatingImages.map((src, idx) => (
+                <img 
+                  key={src}
+                  src={src}
                   alt="Proyectos a Medida"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${idx === currentImage ? 'opacity-100' : 'opacity-0'}`}
                 />
-              </AnimatePresence>
+              ))}
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10 pointer-events-none"></div>
             </div>
 
