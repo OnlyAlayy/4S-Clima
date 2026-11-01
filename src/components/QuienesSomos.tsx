@@ -67,7 +67,7 @@ export default function QuienesSomos() {
 
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
           
-          {/* Left Side: Image Collage */}
+          {/* Left Side: Image Carousel */}
           <motion.div 
             className="lg:w-1/2 relative w-full mt-8 lg:mt-0"
             initial={{ opacity: 0, x: -60 }}
@@ -76,7 +76,7 @@ export default function QuienesSomos() {
             transition={{ duration: 1.2, type: "spring", bounce: 0.2 }}
           >
             {/* Main Image Carousel */}
-            <div className="relative h-[450px] md:h-[550px] w-[85%] rounded-3xl overflow-hidden shadow-2xl bg-gray-100 isolate transform-gpu">
+            <div className="relative h-[450px] md:h-[550px] w-full rounded-3xl overflow-hidden shadow-2xl bg-gray-100 isolate transform-gpu">
               {rotatingImages.map((src, idx) => (
                 <img 
                   key={src}
@@ -87,18 +87,9 @@ export default function QuienesSomos() {
               ))}
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10 pointer-events-none"></div>
             </div>
-
-            {/* Secondary Image Overlapping */}
-            <div className="absolute top-[10%] right-0 w-[50%] h-[250px] md:h-[300px] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] border-8 border-white z-20">
-              <img 
-                src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop" 
-                alt="Instalaciones HVAC"
-                className="w-full h-full object-cover"
-              />
-            </div>
             
             {/* Floating Glassmorphism Badge */}
-            <div className="absolute -bottom-10 right-[5%] md:right-[15%] bg-white p-5 rounded-2xl shadow-xl border border-gray-100 max-w-[280px] flex items-center gap-4 transform hover:-translate-y-2 transition-transform duration-300 z-30">
+            <div className="absolute -bottom-6 right-4 md:right-8 bg-white p-5 rounded-2xl shadow-xl border border-gray-100 max-w-[280px] flex items-center gap-4 transform hover:-translate-y-2 transition-transform duration-300 z-30">
               <div className="bg-gradient-to-br from-primary to-[#088c8b] text-white p-3 rounded-xl flex-shrink-0 shadow-lg">
                 <Award size={24} />
               </div>
