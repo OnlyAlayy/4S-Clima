@@ -79,7 +79,7 @@ export default function NuestroEnfoque() {
             transition={{ duration: 1, type: "spring", bounce: 0.3, delay: 0.2 }}
           >
             <p className="text-gray-500 text-lg leading-relaxed border-l-2 border-gray-200 pl-6">
-              Aplicamos una metodología de trabajo estructurada y orientada a clientes de alta exigencia, asegurando resultados precisos, eficientes y duraderos.
+              Aplicamos una metodología de trabajo estructurada y orientada a proyectos industriales y comerciales, asegurando resultados precisos, eficientes y duraderos.
             </p>
           </motion.div>
         </div>

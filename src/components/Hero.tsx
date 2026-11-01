@@ -39,7 +39,7 @@ export default function Hero() {
               Representantes en Buenos Aires de Carrier y Prihoda Sudamericana
             </span>
             <h1 className="font-sans font-black text-5xl md:text-6xl lg:text-7xl text-gray-900 mb-6 leading-[1.1] tracking-tight">
-              Climatización,<br />Refrigeración y<br />Ventilación<br /><span className="text-4xl md:text-5xl lg:text-5xl text-primary">de alta exigencia.</span>
+              Climatización,<br />Refrigeración y<br />Ventilación<br /><span className="text-4xl md:text-5xl lg:text-5xl text-primary">a nivel industrial y comercial.</span>
             </h1>
 
             <p className="text-gray-500 text-lg md:text-xl mb-10 leading-relaxed font-normal">
