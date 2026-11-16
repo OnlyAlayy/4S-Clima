@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MapPin, Mail, User, Phone, Building, FileText, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react'
-import { supabase, isSupabaseConfigured } from '../lib/supabase'
 
 export default function Contacto() {
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -30,27 +29,19 @@ export default function Contacto() {
     setErrorMessage(null)
 
     try {
-      if (!isSupabaseConfigured) {
-        console.warn('Supabase no está configurado aún (.env). Guardando localmente en modo demo...')
-        await new Promise(r => setTimeout(r, 600))
-        setIsSubmitted(true)
-        return
+      const response = await fetch('/api/contacto', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+
+      const result = await response.json().catch(() => null)
+
+      if (!response.ok) {
+        throw new Error(result?.error || 'No se pudo enviar la consulta. Inténtelo nuevamente a la brevedad.')
       }
-
-      const { error } = await supabase
-        .from('leads')
-        .insert([
-          {
-            nombre: formData.nombre,
-            telefono: formData.telefono || null,
-            email: formData.email,
-            sector: formData.sector || null,
-            mensaje: formData.mensaje || null,
-            estado: 'pendiente'
-          }
-        ])
-
-      if (error) throw error
 
       setIsSubmitted(true)
       setFormData({
@@ -61,7 +52,7 @@ export default function Contacto() {
         mensaje: ''
       })
     } catch (err: any) {
-      console.error('Error al guardar el lead en Supabase:', err)
+      console.error('Error al enviar consulta:', err)
       setErrorMessage(err?.message || 'Hubo un error al enviar su consulta. Por favor intente nuevamente o escríbanos directamente a nuestro email.')
     } finally {
       setLoading(false)
