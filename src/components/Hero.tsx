@@ -61,13 +61,13 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative lg:h-[500px] w-full flex items-center justify-center lg:justify-end gap-6 xl:gap-10"
+            className="relative h-[400px] sm:h-[480px] lg:h-[520px] w-full flex items-center justify-center lg:justify-end gap-6 xl:gap-10"
           >
-            <div className="relative w-full max-w-[600px] h-full rounded-[40px] shadow-[0_20px_60px_-15px_rgba(29,78,216,0.3)]">
+            <div className="relative w-full max-w-[600px] h-full rounded-[40px] shadow-[0_20px_60px_-15px_rgba(29,78,216,0.25)] overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop" 
-                alt="Ingeniería y Climatización" 
-                className="w-full h-full object-cover rounded-[40px] relative z-10"
+                src="/tecnicos4s.jpeg" 
+                alt="Ingeniería y Técnicos en Obra 4S CLIMA" 
+                className="w-full h-full object-cover object-[center_22%] rounded-[40px] relative z-10"
               />
             </div>
             
