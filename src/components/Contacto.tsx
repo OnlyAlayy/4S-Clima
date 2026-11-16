@@ -297,9 +297,9 @@ export default function Contacto() {
                     <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-6">
                       <CheckCircle2 size={40} className="text-green-500" />
                     </div>
-                    <h3 className="font-display font-bold text-3xl text-gray-900 mb-4">¡Mensaje enviado!</h3>
+                    <h3 className="font-display font-bold text-3xl text-gray-900 mb-4">¡Consulta enviada con éxito!</h3>
                     <p className="text-gray-500 text-[15px] max-w-sm mb-8">
-                      Gracias por contactarse con 4S CLIMA. Un especialista de nuestro equipo de ingeniería se comunicará a la brevedad.
+                      Gracias por contactarse con 4S CLIMA. Le hemos enviado un correo de confirmación y nuestro equipo de ingeniería técnica se comunicará dentro de las 48 horas hábiles.
                     </p>
                     <button 
                       onClick={() => setIsSubmitted(false)}
