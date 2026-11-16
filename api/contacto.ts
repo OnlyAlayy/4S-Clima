@@ -283,13 +283,51 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
               </table>
 
               <!-- Canales Directos -->
-              <div style="border-top: 1px solid #e2e8f0; padding-top: 20px; color: #64748b; font-size: 13px; line-height: 1.8;">
-                <div style="font-weight: 700; color: #0f172a; margin-bottom: 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Canales de atención directa:</div>
-                <div style="margin-bottom: 4px;">📍 <strong>Oficinas:</strong> Av. Córdoba 1432 8B, CABA, Buenos Aires</div>
-                <div style="margin-bottom: 4px;">✉️ <strong>Email:</strong> <a href="mailto:contacto@cuatroeseclima.com" style="color: #0284c7; text-decoration: none; font-weight: 600;">contacto@cuatroeseclima.com</a></div>
-                <div style="margin-bottom: 4px;">🌐 <strong>Sitio Web:</strong> <a href="https://cuatroeseclima.com" style="color: #0284c7; text-decoration: none; font-weight: 600;">cuatroeseclima.com</a></div>
-                <div>📸 <strong>Instagram:</strong> <a href="https://instagram.com/cuatroeseclima" target="_blank" style="color: #0284c7; text-decoration: none; font-weight: 600;">@cuatroeseclima</a></div>
-              </div>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top: 1px solid #e2e8f0; padding-top: 20px;">
+                <tr>
+                  <td style="font-weight: 700; color: #0f172a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; padding-bottom: 12px;">
+                    Canales de atención directa:
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="font-size: 13px; color: #64748b; line-height: 1.6;">
+                      <tr>
+                        <td valign="middle" style="width: 24px; padding-bottom: 8px;">
+                          <img src="https://raw.githubusercontent.com/OnlyAlayy/4S-Clima/main/public/icons/pin.png" alt="Ubicación" width="16" height="16" style="display: block; border: 0; width: 16px; height: 16px;" />
+                        </td>
+                        <td valign="middle" style="padding-bottom: 8px;">
+                          <strong>Oficinas:</strong> Av. Córdoba 1432 8B, CABA, Buenos Aires
+                        </td>
+                      </tr>
+                      <tr>
+                        <td valign="middle" style="width: 24px; padding-bottom: 8px;">
+                          <img src="https://raw.githubusercontent.com/OnlyAlayy/4S-Clima/main/public/icons/mail.png" alt="Email" width="16" height="16" style="display: block; border: 0; width: 16px; height: 16px;" />
+                        </td>
+                        <td valign="middle" style="padding-bottom: 8px;">
+                          <strong>Email:</strong> <a href="mailto:contacto@cuatroeseclima.com" style="color: #0284c7; text-decoration: none; font-weight: 600;">contacto@cuatroeseclima.com</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td valign="middle" style="width: 24px; padding-bottom: 8px;">
+                          <img src="https://raw.githubusercontent.com/OnlyAlayy/4S-Clima/main/public/icons/globe.png" alt="Sitio Web" width="16" height="16" style="display: block; border: 0; width: 16px; height: 16px;" />
+                        </td>
+                        <td valign="middle" style="padding-bottom: 8px;">
+                          <strong>Sitio Web:</strong> <a href="https://cuatroeseclima.com" style="color: #0284c7; text-decoration: none; font-weight: 600;">cuatroeseclima.com</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td valign="middle" style="width: 24px;">
+                          <img src="https://raw.githubusercontent.com/OnlyAlayy/4S-Clima/main/public/icons/instagram.png" alt="Instagram" width="16" height="16" style="display: block; border: 0; width: 16px; height: 16px;" />
+                        </td>
+                        <td valign="middle">
+                          <strong>Instagram:</strong> <a href="https://instagram.com/cuatroeseclima" target="_blank" style="color: #0284c7; text-decoration: none; font-weight: 600;">@cuatroeseclima</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 
