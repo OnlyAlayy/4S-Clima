@@ -62,10 +62,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (resendApiKey) {
       const resend = new Resend(resendApiKey)
       try {
-        // Correo 1: Notificación al equipo de 4S Clima
+        // Correo 1: Notificación al equipo de 4S Clima (aferreyra y contacto)
         await resend.emails.send({
           from: '4S Clima Web <noreply@mail.cuatroeseclima.com>',
-          to: ['contacto@cuatroeseclima.com'],
+          to: ['aferreyra@cuatroeseclima.com', 'contacto@cuatroeseclima.com'],
           replyTo: String(email).trim(),
           subject: `Nueva consulta web: ${nombre} - Sector: ${sector || 'General'}`,
           html: `
