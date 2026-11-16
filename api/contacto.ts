@@ -190,7 +190,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                 <tr>
                   <td style="color: #64748b;">
                     <strong>4S Clima</strong> · Climatización, Refrigeración y Ventilación Industrial<br />
-                    Av. Córdoba 1432 8B, CABA · <a href="https://cuatroeseclima.com" style="color: #0284c7; text-decoration: none;">cuatroeseclima.com</a>
+                    Av. Córdoba 1432 8B, CABA · <a href="https://cuatroeseclima.com" style="color: #0284c7; text-decoration: none;">cuatroeseclima.com</a> · <a href="https://instagram.com/cuatroeseclima" target="_blank" style="color: #0284c7; text-decoration: none;">@cuatroeseclima</a>
                   </td>
                   <td align="right" style="color: #94a3b8; font-size: 11px;">
                     Registro automático · © ${currentYear}
@@ -283,11 +283,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
               </table>
 
               <!-- Canales Directos -->
-              <div style="border-top: 1px solid #e2e8f0; padding-top: 20px; color: #64748b; font-size: 13px; line-height: 1.7;">
-                <div style="font-weight: 700; color: #0f172a; margin-bottom: 6px; font-size: 12px;">Canales de atención directa:</div>
-                <div>📍 Av. Córdoba 1432 8B, CABA, Buenos Aires</div>
-                <div>✉️ <a href="mailto:contacto@cuatroeseclima.com" style="color: #0284c7; text-decoration: none;">contacto@cuatroeseclima.com</a></div>
-                <div>🌐 <a href="https://cuatroeseclima.com" style="color: #0284c7; text-decoration: none; font-weight: 600;">cuatroeseclima.com</a></div>
+              <div style="border-top: 1px solid #e2e8f0; padding-top: 20px; color: #64748b; font-size: 13px; line-height: 1.8;">
+                <div style="font-weight: 700; color: #0f172a; margin-bottom: 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Canales de atención directa:</div>
+                <div style="margin-bottom: 4px;">📍 <strong>Oficinas:</strong> Av. Córdoba 1432 8B, CABA, Buenos Aires</div>
+                <div style="margin-bottom: 4px;">✉️ <strong>Email:</strong> <a href="mailto:contacto@cuatroeseclima.com" style="color: #0284c7; text-decoration: none; font-weight: 600;">contacto@cuatroeseclima.com</a></div>
+                <div style="margin-bottom: 4px;">🌐 <strong>Sitio Web:</strong> <a href="https://cuatroeseclima.com" style="color: #0284c7; text-decoration: none; font-weight: 600;">cuatroeseclima.com</a></div>
+                <div>📸 <strong>Instagram:</strong> <a href="https://instagram.com/cuatroeseclima" target="_blank" style="color: #0284c7; text-decoration: none; font-weight: 600;">@cuatroeseclima</a></div>
               </div>
             </td>
           </tr>

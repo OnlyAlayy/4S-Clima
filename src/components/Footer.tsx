@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Phone, Mail, MessageCircle, Linkedin } from 'lucide-react'
+import { Phone, Mail, MessageCircle, Instagram } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -78,11 +78,11 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="flex items-center gap-4 text-gray-500 hover:text-primary transition-colors text-sm group">
+                  <a href="https://instagram.com/cuatroeseclima" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-gray-500 hover:text-primary transition-colors text-sm group">
                     <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Linkedin size={14} fill="currentColor" strokeWidth={0} />
+                      <Instagram size={14} />
                     </div>
-                    4S CLIMA
+                    @cuatroeseclima
                   </a>
                 </li>
               </ul>
