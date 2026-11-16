@@ -96,7 +96,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td align="left" valign="middle">
-                    <img src="https://cuatroeseclima.com/logo.png" alt="4S Clima" width="135" style="display: block; border: 0; outline: none; text-decoration: none; max-width: 135px; height: auto;" />
+                    <img src="https://raw.githubusercontent.com/OnlyAlayy/4S-Clima/main/public/logo-clean.png" alt="4S Clima" width="135" style="display: block; border: 0; outline: none; text-decoration: none; max-width: 135px; height: auto;" />
                   </td>
                   <td align="right" valign="middle" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
                     <div style="font-size: 11px; font-weight: 700; color: #0284c7; text-transform: uppercase; letter-spacing: 0.5px;">Portal Web · Leads</div>
@@ -241,7 +241,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td align="left" valign="middle">
-                    <img src="https://cuatroeseclima.com/logo.png" alt="4S Clima" width="135" style="display: block; border: 0; outline: none; text-decoration: none; max-width: 135px; height: auto;" />
+                    <img src="https://raw.githubusercontent.com/OnlyAlayy/4S-Clima/main/public/logo-clean.png" alt="4S Clima" width="135" style="display: block; border: 0; outline: none; text-decoration: none; max-width: 135px; height: auto;" />
                   </td>
                   <td align="right" valign="middle" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
                     <div style="font-size: 11px; font-weight: 700; color: #0284c7; text-transform: uppercase; letter-spacing: 0.5px;">Ingeniería Térmica</div>
