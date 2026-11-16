@@ -51,7 +51,7 @@ export default function Navbar() {
             <img 
               src="/logo-clean.png" 
               alt="4S CLIMA" 
-              className="h-14 md:h-16 w-auto object-contain transition-transform group-hover:scale-105 duration-200"
+              className="h-[46px] md:h-[52px] w-auto object-contain transition-transform group-hover:scale-105 duration-200"
             />
           </a>
 

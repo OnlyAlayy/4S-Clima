@@ -15,15 +15,15 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between gap-16 md:gap-8 mb-8">
           
           {/* Brand Logo */}
-          <div className="md:w-1/3 flex flex-col items-center md:items-start justify-center md:justify-start">
+          <div className="md:w-1/3 flex flex-col items-center justify-start text-center md:px-4">
             <a href="#hero" className="inline-block group">
               <img 
                 src="/logo-clean.png" 
                 alt="4S CLIMA" 
-                className="h-20 w-auto object-contain transition-transform group-hover:scale-105 duration-200"
+                className="h-16 md:h-18 w-auto object-contain transition-transform group-hover:scale-105 duration-200"
               />
             </a>
-            <p className="text-gray-400 text-xs font-medium mt-3 text-center md:text-left">
+            <p className="text-gray-400 text-xs font-medium mt-3 max-w-[240px] text-center mx-auto">
               Soluciones integrales de climatización y ventilación.
             </p>
           </div>
