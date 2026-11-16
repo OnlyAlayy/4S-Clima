@@ -279,7 +279,7 @@ export default function Contacto() {
                       
                       <div className="text-center mt-2">
                         <p className="text-[11px] font-medium text-gray-400 tracking-wide uppercase mb-1">
-                          Respuesta garantizada dentro de las 24 horas hábiles
+                          Respuesta garantizada dentro de las 48 horas hábiles
                         </p>
                         <p className="text-[10px] text-gray-400 max-w-xs mx-auto leading-tight">
                           Al enviar este formulario, usted acepta el tratamiento de sus datos personales acorde a las normativas de protección de datos vigentes (Ley 25.326).
