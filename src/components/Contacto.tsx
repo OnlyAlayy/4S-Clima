@@ -220,12 +220,17 @@ export default function Contacto() {
                               onChange={handleChange}
                               className="w-full bg-slate-50/50 border border-gray-200 rounded-xl pl-11 pr-4 py-3.5 text-gray-900 text-[15px] focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all appearance-none cursor-pointer"
                             >
-                              <option value="">Seleccione un sector...</option>
-                              <option value="Salud y Áreas Críticas">Salud y Áreas Críticas</option>
-                              <option value="Industria General">Industria General</option>
-                              <option value="Frío Industrial">Frío Industrial</option>
-                              <option value="Industria Farmacéutica">Industria Farmacéutica</option>
-                              <option value="Abonos de Mantenimiento">Abonos de Mantenimiento</option>
+                              <option value="">Seleccione un sector o rubro...</option>
+                              <option value="Industria y Manufactura">Industria y Manufactura</option>
+                              <option value="Comercio, Retail y Locales">Comercio, Retail y Locales</option>
+                              <option value="Oficinas Corporativas y Edificios">Oficinas Corporativas y Edificios</option>
+                              <option value="Salud, Clínicas y Áreas Críticas">Salud, Clínicas y Áreas Críticas</option>
+                              <option value="Industria Farmacéutica y Laboratorios">Industria Farmacéutica y Laboratorios</option>
+                              <option value="Frío Industrial y Cámaras Frigoríficas">Frío Industrial y Cámaras Frigoríficas</option>
+                              <option value="Logística, Naves y Depósitos">Logística, Naves y Depósitos</option>
+                              <option value="Ductos Textiles (Příhoda)">Ductos Textiles (Příhoda)</option>
+                              <option value="Abonos y Mantenimiento Técnico">Abonos y Mantenimiento Técnico</option>
+                              <option value="Otro sector / Consulta general">Otro sector / Consulta general</option>
                             </select>
                             <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-gray-400">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
