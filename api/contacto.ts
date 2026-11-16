@@ -38,7 +38,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       auth: { persistSession: false, autoRefreshToken: false }
     })
 
-    // 3. Guardar en Supabase (para verlo en la app interna de 4S Clima)
+    // 3. Guardar en Supabase (para la aplicación de gestión de 4S Clima)
     const { error: dbError } = await supabase
       .from('leads')
       .insert([
@@ -57,104 +57,146 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(500).json({ error: 'Error al registrar la consulta en la base de datos.' })
     }
 
-    // 4. Enviar correos con Resend usando diseño corporativo de alta presentación
+    // 4. Enviar correos transaccionales con Resend (Plantillas corporativas estilo ERP)
     const resendApiKey = process.env.RESEND_API_KEY
     if (resendApiKey) {
       const resend = new Resend(resendApiKey)
       const currentYear = new Date().getFullYear()
 
       try {
-        // CORREO 1: Notificación ejecutiva para el equipo de 4S Clima (aferreyra y contacto)
+        // CORREO 1: Notificación interna sobria para el equipo de 4S Clima
         await resend.emails.send({
           from: '4S Clima Web <noreply@mail.cuatroeseclima.com>',
           to: ['aferreyra@cuatroeseclima.com', 'contacto@cuatroeseclima.com'],
           replyTo: String(email).trim(),
-          subject: `🔔 Nueva Consulta Web: ${nombre} · Sector ${sector || 'General'}`,
+          subject: `Nueva Consulta Web: ${nombre} · Sector ${sector || 'General'}`,
           html: `
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notificación Interna de Consulta - 4S Clima</title>
 </head>
-<body style="margin: 0; padding: 0; background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #f1f5f9; padding: 30px 15px;">
+<body style="margin: 0; padding: 0; background-color: #f4f6f8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f4f6f8; padding: 32px 14px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;">
+        <!-- Contenedor Principal (600px máx) -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
           
-          <!-- Header Corporativo -->
+          <!-- Línea de acento institucional superior -->
           <tr>
-            <td style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 28px 32px; border-bottom: 4px solid #1d4ed8;">
-              <table width="100%" cellspacing="0" cellpadding="0">
+            <td style="background-color: #0284c7; height: 4px; line-height: 4px; font-size: 4px;">&nbsp;</td>
+          </tr>
+
+          <!-- Cabecera Corporativa con Logo Oficial -->
+          <tr>
+            <td style="padding: 24px 30px; border-bottom: 1px solid #e2e8f0; background-color: #ffffff;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="left" valign="middle">
+                    <img src="https://cuatroeseclima.com/logo.png" alt="4S Clima" width="135" style="display: block; border: 0; outline: none; text-decoration: none; max-width: 135px; height: auto;" />
+                  </td>
+                  <td align="right" valign="middle" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                    <div style="font-size: 11px; font-weight: 700; color: #0284c7; text-transform: uppercase; letter-spacing: 0.5px;">Portal Web · Leads</div>
+                    <div style="font-size: 11px; color: #64748b; margin-top: 3px;">Notificación Interna</div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Cuerpo del Correo -->
+          <tr>
+            <td style="padding: 28px 30px;">
+              
+              <!-- Título del mensaje -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 22px;">
                 <tr>
                   <td>
-                    <span style="font-size: 26px; font-weight: 900; color: #ffffff; letter-spacing: 2px;">4S <span style="color: #60a5fa;">CLIMA</span></span>
-                    <div style="color: #94a3b8; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; font-weight: 600;">Panel Web · Notificación de Lead</div>
-                  </td>
-                  <td align="right">
-                    <span style="background-color: #1d4ed8; color: #ffffff; font-size: 11px; font-weight: 700; padding: 6px 14px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px;">Nuevo Contacto</span>
+                    <h2 style="margin: 0 0 6px 0; font-size: 18px; font-weight: 700; color: #0f172a; line-height: 1.3;">Nueva consulta técnica recibida</h2>
+                    <p style="margin: 0; font-size: 13px; color: #64748b; line-height: 1.5;">Se ha registrado una solicitud de contacto a través del sitio web oficial (<strong>cuatroeseclima.com</strong>):</p>
                   </td>
                 </tr>
               </table>
+
+              <!-- Estructura de Datos del Lead -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 24px; font-size: 13px;">
+                <tr>
+                  <td style="padding: 12px 18px; width: 35%; color: #64748b; font-weight: 600; border-bottom: 1px solid #edf2f7;">Nombre y Apellido</td>
+                  <td style="padding: 12px 18px; color: #0f172a; font-weight: 700; border-bottom: 1px solid #edf2f7;">${nombre}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 18px; color: #64748b; font-weight: 600; border-bottom: 1px solid #edf2f7;">Correo Electrónico</td>
+                  <td style="padding: 12px 18px; border-bottom: 1px solid #edf2f7;">
+                    <a href="mailto:${email}" style="color: #0284c7; text-decoration: none; font-weight: 600;">${email}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 18px; color: #64748b; font-weight: 600; border-bottom: 1px solid #edf2f7;">Teléfono</td>
+                  <td style="padding: 12px 18px; border-bottom: 1px solid #edf2f7;">
+                    ${telefono ? `<a href="tel:${telefono}" style="color: #0f172a; text-decoration: none; font-weight: 600;">${telefono}</a>` : '<span style="color: #94a3b8; font-style: italic;">No especificado</span>'}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 18px; color: #64748b; font-weight: 600;">Sector de Interés</td>
+                  <td style="padding: 12px 18px; color: #0f172a; font-weight: 600;">
+                    <span style="display: inline-block; background-color: #e0f2fe; color: #0369a1; padding: 3px 10px; border-radius: 4px; font-size: 12px; font-weight: 600;">${sector || 'General'}</span>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Caja de Requerimiento Técnico -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 26px;">
+                <tr>
+                  <td style="padding-bottom: 8px;">
+                    <span style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px;">Mensaje / Requerimiento Técnico:</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="background-color: #ffffff; border: 1px solid #cbd5e1; border-left: 3px solid #0284c7; border-radius: 4px; padding: 16px 18px; color: #1e293b; font-size: 13px; line-height: 1.6; white-space: pre-wrap;">${mensaje || 'Sin mensaje adicional.'}</td>
+                </tr>
+              </table>
+
+              <!-- Botones de Acción Funcionales -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="left">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td align="center" style="border-radius: 6px; background-color: #0f172a;">
+                          <a href="mailto:${email}?subject=Respuesta a su consulta técnica · 4S Clima" target="_blank" style="display: inline-block; padding: 11px 22px; font-size: 13px; font-weight: 600; color: #ffffff; text-decoration: none; border-radius: 6px; letter-spacing: 0.3px;">Responder por Email</a>
+                        </td>
+                        ${telefono ? `
+                        <td style="width: 12px;"></td>
+                        <td align="center" style="border-radius: 6px; background-color: #f1f5f9; border: 1px solid #cbd5e1;">
+                          <a href="tel:${telefono}" target="_blank" style="display: inline-block; padding: 11px 20px; font-size: 13px; font-weight: 600; color: #0f172a; text-decoration: none; border-radius: 6px;">Llamar por Teléfono</a>
+                        </td>
+                        ` : ''}
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
             </td>
           </tr>
 
-          <!-- Contenido -->
+          <!-- Footer Institucional -->
           <tr>
-            <td style="padding: 32px;">
-              <h1 style="margin: 0 0 12px 0; color: #0f172a; font-size: 20px; font-weight: 700;">Nueva consulta recibida en la web</h1>
-              <p style="margin: 0 0 24px 0; color: #64748b; font-size: 14px; line-height: 1.5;">Un potencial cliente ha completado el formulario de contacto oficial en <strong>cuatroeseclima.com</strong>:</p>
-              
-              <!-- Ficha de Datos del Cliente -->
-              <table width="100%" cellspacing="0" cellpadding="0" style="background-color: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 24px; overflow: hidden;">
+            <td style="padding: 20px 30px; background-color: #f8fafc; border-top: 1px solid #e2e8f0; text-align: left; font-size: 11px; color: #94a3b8; line-height: 1.6;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding: 14px 20px; border-bottom: 1px solid #e2e8f0; width: 35%; color: #64748b; font-size: 13px; font-weight: 600;">Nombre y Apellido</td>
-                  <td style="padding: 14px 20px; border-bottom: 1px solid #e2e8f0; color: #0f172a; font-size: 14px; font-weight: 700;">${nombre}</td>
-                </tr>
-                <tr>
-                  <td style="padding: 14px 20px; border-bottom: 1px solid #e2e8f0; color: #64748b; font-size: 13px; font-weight: 600;">Correo Electrónico</td>
-                  <td style="padding: 14px 20px; border-bottom: 1px solid #e2e8f0; font-size: 14px; font-weight: 600;">
-                    <a href="mailto:${email}" style="color: #1d4ed8; text-decoration: none;">${email}</a>
+                  <td style="color: #64748b;">
+                    <strong>4S Clima</strong> · Climatización, Refrigeración y Ventilación Industrial<br />
+                    Av. Córdoba 1432 8B, CABA · <a href="https://cuatroeseclima.com" style="color: #0284c7; text-decoration: none;">cuatroeseclima.com</a>
                   </td>
-                </tr>
-                <tr>
-                  <td style="padding: 14px 20px; border-bottom: 1px solid #e2e8f0; color: #64748b; font-size: 13px; font-weight: 600;">Teléfono</td>
-                  <td style="padding: 14px 20px; border-bottom: 1px solid #e2e8f0; color: #0f172a; font-size: 14px; font-weight: 600;">
-                    ${telefono ? `<a href="tel:${telefono}" style="color: #0f172a; text-decoration: none; font-weight: 700;">${telefono}</a>` : '<span style="color: #94a3b8; font-style: italic;">No especificado</span>'}
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 14px 20px; color: #64748b; font-size: 13px; font-weight: 600;">Sector de Interés</td>
-                  <td style="padding: 14px 20px; color: #1d4ed8; font-size: 14px; font-weight: 700;">
-                    <span style="background-color: #dbeafe; color: #1e40af; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 700;">${sector || 'General'}</span>
+                  <td align="right" style="color: #94a3b8; font-size: 11px;">
+                    Registro automático · © ${currentYear}
                   </td>
                 </tr>
               </table>
-
-              <!-- Mensaje / Detalle -->
-              <div style="margin-bottom: 28px;">
-                <div style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Mensaje o requerimiento:</div>
-                <div style="background-color: #ffffff; border-left: 4px solid #1d4ed8; padding: 16px 20px; border-radius: 4px 8px 8px 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border-top: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; color: #334155; font-size: 14px; line-height: 1.6; white-space: pre-wrap;">${mensaje || 'Sin detalles adicionales.'}</div>
-              </div>
-
-              <!-- Botones de Acción Rápida -->
-              <table width="100%" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td align="center" style="padding-top: 6px;">
-                    <a href="mailto:${email}?subject=Respuesta a su consulta en 4S Clima" style="display: inline-block; background-color: #1d4ed8; color: #ffffff; font-size: 14px; font-weight: 700; padding: 13px 28px; border-radius: 8px; text-decoration: none; margin-right: 10px; box-shadow: 0 2px 8px rgba(29, 78, 216, 0.25);">Responder por Email</a>
-                    ${telefono ? `<a href="tel:${telefono}" style="display: inline-block; background-color: #f1f5f9; color: #0f172a; font-size: 14px; font-weight: 700; padding: 13px 24px; border-radius: 8px; text-decoration: none; border: 1px solid #cbd5e1;">Llamar por Teléfono</a>` : ''}
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-
-          <!-- Pie del Correo Interno -->
-          <tr>
-            <td style="background-color: #f8fafc; padding: 18px 32px; border-top: 1px solid #e2e8f0; text-align: center; color: #94a3b8; font-size: 12px; line-height: 1.5;">
-              Lead guardado automáticamente en la base de datos de 4S Clima.<br>
-              © ${currentYear} 4S Clima · Todos los derechos reservados.
             </td>
           </tr>
 
@@ -167,79 +209,93 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           `
         })
 
-        // CORREO 2: Confirmación formal y de bienvenida para el CLIENTE
+        // CORREO 2: Confirmación formal al CLIENTE
         await resend.emails.send({
           from: '4S Clima <noreply@mail.cuatroeseclima.com>',
           to: [String(email).trim()],
           replyTo: 'contacto@cuatroeseclima.com',
           subject: 'Hemos recibido tu consulta · 4S Clima',
           html: `
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hemos recibido tu consulta - 4S Clima</title>
 </head>
-<body style="margin: 0; padding: 0; background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #f1f5f9; padding: 35px 15px;">
+<body style="margin: 0; padding: 0; background-color: #f4f6f8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f4f6f8; padding: 32px 14px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;">
+        <!-- Contenedor Principal (600px máx) -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);">
           
-          <!-- Header Formal -->
+          <!-- Línea de acento institucional -->
           <tr>
-            <td style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 36px 32px; text-align: center; border-bottom: 4px solid #1d4ed8;">
-              <span style="font-size: 30px; font-weight: 900; color: #ffffff; letter-spacing: 3px; display: block;">4S <span style="color: #60a5fa;">CLIMA</span></span>
-              <div style="color: #cbd5e1; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-top: 8px; font-weight: 600;">
-                Climatización · Refrigeración · Ventilación Industrial
-              </div>
+            <td style="background-color: #0284c7; height: 4px; line-height: 4px; font-size: 4px;">&nbsp;</td>
+          </tr>
+
+          <!-- Cabecera Institucional con Logo Oficial -->
+          <tr>
+            <td style="padding: 24px 30px; border-bottom: 1px solid #e2e8f0; background-color: #ffffff;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="left" valign="middle">
+                    <img src="https://cuatroeseclima.com/logo.png" alt="4S Clima" width="135" style="display: block; border: 0; outline: none; text-decoration: none; max-width: 135px; height: auto;" />
+                  </td>
+                  <td align="right" valign="middle" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                    <div style="font-size: 11px; font-weight: 700; color: #0284c7; text-transform: uppercase; letter-spacing: 0.5px;">Ingeniería Térmica</div>
+                    <div style="font-size: 11px; color: #64748b; margin-top: 3px;">Recepción de Consulta</div>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 
-          <!-- Cuerpo Principal -->
+          <!-- Cuerpo -->
           <tr>
-            <td style="padding: 36px 32px;">
-              <h1 style="margin: 0 0 16px 0; color: #0f172a; font-size: 22px; font-weight: 700;">¡Gracias por contactarse con 4S Clima!</h1>
-              <p style="margin: 0 0 20px 0; color: #475569; font-size: 15px; line-height: 1.6;">
-                Estimado/a <strong>${nombre}</strong>, le confirmamos que hemos recibido con éxito su consulta referida a <strong>${sector || 'nuestros servicios y proyectos'}</strong>.
+            <td style="padding: 30px;">
+              <h1 style="margin: 0 0 14px 0; color: #0f172a; font-size: 20px; font-weight: 700;">¡Gracias por contactarse con 4S Clima!</h1>
+              <p style="margin: 0 0 20px 0; color: #475569; font-size: 14px; line-height: 1.6;">
+                Estimado/a <strong>${nombre}</strong>, le confirmamos que hemos recibido su consulta referida a <strong>${sector || 'nuestros servicios y proyectos'}</strong>.
               </p>
 
               <!-- Caja de Compromiso de Respuesta -->
-              <div style="background-color: #eff6ff; border: 1px solid #bfdbfe; border-left: 4px solid #1d4ed8; border-radius: 8px; padding: 18px 20px; margin-bottom: 28px;">
-                <div style="color: #1e40af; font-weight: 700; font-size: 14px; margin-bottom: 4px;">Compromiso de respuesta técnica</div>
-                <div style="color: #1e3a8a; font-size: 14px; line-height: 1.5;">
-                  Nuestro equipo de ingeniería técnica está evaluando sus requerimientos y se pondrá en contacto con usted dentro de las próximas <strong>48 horas hábiles</strong>.
+              <div style="background-color: #f0f9ff; border: 1px solid #bae6fd; border-left: 3px solid #0284c7; border-radius: 6px; padding: 16px 18px; margin-bottom: 24px;">
+                <div style="color: #0369a1; font-weight: 700; font-size: 13px; margin-bottom: 4px;">Compromiso de respuesta técnica</div>
+                <div style="color: #0c4a6e; font-size: 13px; line-height: 1.5;">
+                  Nuestro equipo de ingeniería térmica evaluará sus requerimientos y se pondrá en contacto con usted dentro de las próximas <strong>48 horas hábiles</strong>.
                 </div>
               </div>
 
-              <!-- Bloque de Respaldo y Trayectoria -->
-              <table width="100%" cellspacing="0" cellpadding="0" style="margin-bottom: 28px; background-color: #f8fafc; border-radius: 10px; border: 1px solid #e2e8f0; overflow: hidden;">
+              <!-- Bloque de Trayectoria -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 24px; background-color: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
                 <tr>
-                  <td width="50%" align="center" style="border-right: 1px solid #e2e8f0; padding: 16px 12px;">
-                    <div style="font-size: 20px; font-weight: 900; color: #1d4ed8;">31 Años</div>
-                    <div style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600; margin-top: 4px;">Trayectoria en Obras Térmicas</div>
+                  <td width="50%" align="center" style="border-right: 1px solid #e2e8f0; padding: 14px 10px;">
+                    <div style="font-size: 18px; font-weight: 800; color: #0284c7;">31 Años</div>
+                    <div style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600; margin-top: 3px;">Trayectoria en Obras Térmicas</div>
                   </td>
-                  <td width="50%" align="center" style="padding: 16px 12px;">
-                    <div style="font-size: 16px; font-weight: 900; color: #0f172a;">Carrier · Příhoda</div>
-                    <div style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600; margin-top: 4px;">Representantes en Bs. As.</div>
+                  <td width="50%" align="center" style="padding: 14px 10px;">
+                    <div style="font-size: 15px; font-weight: 800; color: #0f172a;">Carrier · Příhoda</div>
+                    <div style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600; margin-top: 3px;">Representantes en Bs. As.</div>
                   </td>
                 </tr>
               </table>
 
-              <!-- Canales de Contacto Directo -->
-              <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; color: #64748b; font-size: 13px; line-height: 1.8;">
-                <div style="font-weight: 700; color: #0f172a; margin-bottom: 8px; text-transform: uppercase; font-size: 11px; letter-spacing: 1px;">Canales de atención directa:</div>
-                <div>📍 <strong>Oficinas:</strong> Av. Córdoba 1432 8B, CABA, Buenos Aires</div>
-                <div>✉️ <strong>Email:</strong> <a href="mailto:contacto@cuatroeseclima.com" style="color: #1d4ed8; text-decoration: none;">contacto@cuatroeseclima.com</a></div>
-                <div>🌐 <strong>Sitio Web:</strong> <a href="https://cuatroeseclima.com" style="color: #1d4ed8; text-decoration: none; font-weight: 600;">cuatroeseclima.com</a></div>
+              <!-- Canales Directos -->
+              <div style="border-top: 1px solid #e2e8f0; padding-top: 20px; color: #64748b; font-size: 13px; line-height: 1.7;">
+                <div style="font-weight: 700; color: #0f172a; margin-bottom: 6px; font-size: 12px;">Canales de atención directa:</div>
+                <div>📍 Av. Córdoba 1432 8B, CABA, Buenos Aires</div>
+                <div>✉️ <a href="mailto:contacto@cuatroeseclima.com" style="color: #0284c7; text-decoration: none;">contacto@cuatroeseclima.com</a></div>
+                <div>🌐 <a href="https://cuatroeseclima.com" style="color: #0284c7; text-decoration: none; font-weight: 600;">cuatroeseclima.com</a></div>
               </div>
             </td>
           </tr>
 
-          <!-- Footer del Correo -->
+          <!-- Footer -->
           <tr>
-            <td style="background-color: #f8fafc; padding: 22px 32px; border-top: 1px solid #e2e8f0; text-align: center; color: #94a3b8; font-size: 12px; line-height: 1.5;">
-              Este es un correo automático de confirmación. Si desea agregar detalles o documentación técnica a su consulta, simplemente responda a este mensaje.<br><br>
+            <td style="padding: 18px 30px; background-color: #f8fafc; border-top: 1px solid #e2e8f0; text-align: left; font-size: 11px; color: #94a3b8; line-height: 1.5;">
+              Este es un correo automático de confirmación. Si desea agregar detalles técnicos a su consulta, simplemente responda a este mensaje.<br />
               © ${currentYear} <strong>4S Clima</strong> · Todos los derechos reservados.
             </td>
           </tr>
