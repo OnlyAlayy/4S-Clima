@@ -1,14 +1,72 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MapPin, Mail, User, Phone, Building, FileText, Send, CheckCircle2 } from 'lucide-react'
+import { MapPin, Mail, User, Phone, Building, FileText, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react'
+import { supabase, isSupabaseConfigured } from '../lib/supabase'
 
 export default function Contacto() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-  };
+  const [formData, setFormData] = useState({
+    nombre: '',
+    telefono: '',
+    email: '',
+    sector: '',
+    mensaje: ''
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }))
+    if (errorMessage) setErrorMessage(null)
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setErrorMessage(null)
+
+    try {
+      if (!isSupabaseConfigured) {
+        console.warn('Supabase no está configurado aún (.env). Guardando localmente en modo demo...')
+        await new Promise(r => setTimeout(r, 600))
+        setIsSubmitted(true)
+        return
+      }
+
+      const { error } = await supabase
+        .from('leads')
+        .insert([
+          {
+            nombre: formData.nombre,
+            telefono: formData.telefono || null,
+            email: formData.email,
+            sector: formData.sector || null,
+            mensaje: formData.mensaje || null,
+            estado: 'pendiente'
+          }
+        ])
+
+      if (error) throw error
+
+      setIsSubmitted(true)
+      setFormData({
+        nombre: '',
+        telefono: '',
+        email: '',
+        sector: '',
+        mensaje: ''
+      })
+    } catch (err: any) {
+      console.error('Error al guardar el lead en Supabase:', err)
+      setErrorMessage(err?.message || 'Hubo un error al enviar su consulta. Por favor intente nuevamente o escríbanos directamente a nuestro email.')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <section id="soumission" className="py-24 bg-[#f8fafc] relative overflow-hidden">
@@ -109,7 +167,10 @@ export default function Contacto() {
                             </div>
                             <input 
                               type="text" 
+                              name="nombre"
                               required
+                              value={formData.nombre}
+                              onChange={handleChange}
                               placeholder="Juan Pérez"
                               className="w-full bg-slate-50/50 border border-gray-200 rounded-xl pl-11 pr-4 py-3.5 text-gray-900 text-[15px] focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all"
                             />
@@ -125,7 +186,9 @@ export default function Contacto() {
                             </div>
                             <input 
                               type="tel" 
-                              required
+                              name="telefono"
+                              value={formData.telefono}
+                              onChange={handleChange}
                               placeholder="(11) 1234-5678"
                               className="w-full bg-slate-50/50 border border-gray-200 rounded-xl pl-11 pr-4 py-3.5 text-gray-900 text-[15px] focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all"
                             />
@@ -143,7 +206,10 @@ export default function Contacto() {
                             </div>
                             <input 
                               type="email" 
+                              name="email"
                               required
+                              value={formData.email}
+                              onChange={handleChange}
                               placeholder="juan@empresa.com"
                               className="w-full bg-slate-50/50 border border-gray-200 rounded-xl pl-11 pr-4 py-3.5 text-gray-900 text-[15px] focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all"
                             />
@@ -157,13 +223,18 @@ export default function Contacto() {
                             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
                               <Building size={18} />
                             </div>
-                            <select className="w-full bg-slate-50/50 border border-gray-200 rounded-xl pl-11 pr-4 py-3.5 text-gray-900 text-[15px] focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all appearance-none cursor-pointer">
+                            <select 
+                              name="sector"
+                              value={formData.sector}
+                              onChange={handleChange}
+                              className="w-full bg-slate-50/50 border border-gray-200 rounded-xl pl-11 pr-4 py-3.5 text-gray-900 text-[15px] focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all appearance-none cursor-pointer"
+                            >
                               <option value="">Seleccione un sector...</option>
-                              <option value="salud">Salud y Áreas Críticas</option>
-                              <option value="industria">Industria General</option>
-                              <option value="frio">Frío Industrial</option>
-                              <option value="farma">Industria Farmacéutica</option>
-                              <option value="mantenimiento">Abonos de Mantenimiento</option>
+                              <option value="Salud y Áreas Críticas">Salud y Áreas Críticas</option>
+                              <option value="Industria General">Industria General</option>
+                              <option value="Frío Industrial">Frío Industrial</option>
+                              <option value="Industria Farmacéutica">Industria Farmacéutica</option>
+                              <option value="Abonos de Mantenimiento">Abonos de Mantenimiento</option>
                             </select>
                             <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-gray-400">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -181,17 +252,38 @@ export default function Contacto() {
                           </div>
                           <textarea 
                             rows={4}
+                            name="mensaje"
+                            value={formData.mensaje}
+                            onChange={handleChange}
                             placeholder="Detalles de la obra, requerimientos técnicos..."
                             className="w-full bg-slate-50/50 border border-gray-200 rounded-xl pl-11 pr-4 py-3.5 text-gray-900 text-[15px] focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all resize-none"
                           ></textarea>
                         </div>
                       </div>
 
+                      {errorMessage && (
+                        <div className="flex items-center gap-3 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+                          <AlertCircle size={20} className="shrink-0" />
+                          <span>{errorMessage}</span>
+                        </div>
+                      )}
+
                       <button 
                         type="submit"
-                        className="w-full bg-primary hover:bg-primary-hover text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-[0_4px_14px_0_rgba(29,78,216,0.39)] hover:shadow-[0_6px_20px_rgba(29,78,216,0.23)] hover:-translate-y-0.5 mt-4"
+                        disabled={loading}
+                        className="w-full bg-primary hover:bg-primary-hover disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-[0_4px_14px_0_rgba(29,78,216,0.39)] hover:shadow-[0_6px_20px_rgba(29,78,216,0.23)] hover:-translate-y-0.5 mt-4"
                       >
-                        Enviar Mensaje <Send size={18} className="ml-1" />
+                        {loading ? (
+                          <>
+                            <Loader2 size={18} className="animate-spin" />
+                            <span>Enviando consulta...</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>Enviar Mensaje</span>
+                            <Send size={18} className="ml-1" />
+                          </>
+                        )}
                       </button>
                       
                       <div className="text-center mt-2">
