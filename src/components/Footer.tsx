@@ -70,11 +70,11 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="tel:+541112345678" className="flex items-center gap-4 text-gray-500 hover:text-primary transition-colors text-sm group">
+                  <a href="tel:+5491155978152" className="flex items-center gap-4 text-gray-500 hover:text-primary transition-colors text-sm group">
                     <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Phone size={14} fill="currentColor" strokeWidth={0} />
                     </div>
-                    +54 9 11 1234-5678
+                    +54 9 11 5597-8152
                   </a>
                 </li>
                 <li>

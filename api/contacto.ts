@@ -317,6 +317,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                         </td>
                       </tr>
                       <tr>
+                        <td valign="middle" style="width: 24px; padding-bottom: 8px;">
+                          <img src="https://cuatroeseclima.com/icons/whatsapp.png" alt="WhatsApp" width="16" height="16" style="display: block; border: 0; width: 16px; height: 16px;" />
+                        </td>
+                        <td valign="middle" style="padding-bottom: 8px;">
+                          <strong>WhatsApp:</strong> <a href="https://wa.me/5491155978152" target="_blank" style="color: #0284c7; text-decoration: none; font-weight: 600;">+54 9 11 5597-8152</a>
+                        </td>
+                      </tr>
+                      <tr>
                         <td valign="middle" style="width: 24px;">
                           <img src="https://cuatroeseclima.com/icons/instagram.png" alt="Instagram" width="16" height="16" style="display: block; border: 0; width: 16px; height: 16px;" />
                         </td>

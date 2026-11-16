@@ -180,7 +180,7 @@ export default function Contacto() {
                               name="telefono"
                               value={formData.telefono}
                               onChange={handleChange}
-                              placeholder="(11) 1234-5678"
+                              placeholder="(11) 5597-8152"
                               className="w-full bg-slate-50/50 border border-gray-200 rounded-xl pl-11 pr-4 py-3.5 text-gray-900 text-[15px] focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all"
                             />
                           </div>

@@ -96,7 +96,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="tel:+541112345678"
+              href="tel:+5491155978152"
               className="flex items-center justify-center gap-2 bg-primary text-white px-5 py-3 rounded font-bold mt-2"
               onClick={() => setMobileOpen(false)}
             >
