@@ -57,15 +57,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(500).json({ error: 'Error al registrar la consulta en la base de datos.' })
     }
 
-    // 4. Enviar correos con Resend (si está configurada la API KEY)
+    // 4. Enviar correos con Resend usando el dominio verificado
     const resendApiKey = process.env.RESEND_API_KEY
     if (resendApiKey) {
       const resend = new Resend(resendApiKey)
       try {
         // Correo 1: Notificación al equipo de 4S Clima
         await resend.emails.send({
-          from: '4S Clima Web <onboarding@resend.dev>', // Cambiar al verificar dominio en Resend
+          from: '4S Clima Web <noreply@mail.cuatroeseclima.com>',
           to: ['contacto@cuatroeseclima.com'],
+          replyTo: String(email).trim(),
           subject: `Nueva consulta web: ${nombre} - Sector: ${sector || 'General'}`,
           html: `
             <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
@@ -85,8 +86,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
         // Correo 2: Confirmación automática al CLIENTE
         await resend.emails.send({
-          from: '4S Clima <onboarding@resend.dev>',
+          from: '4S Clima <noreply@mail.cuatroeseclima.com>',
           to: [String(email).trim()],
+          replyTo: 'contacto@cuatroeseclima.com',
           subject: 'Hemos recibido tu consulta - 4S Clima',
           html: `
             <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
