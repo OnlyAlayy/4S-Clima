@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://4sclima.com.ar/sitemap.xml
+Sitemap: https://cuatroeseclima.com/sitemap.xml

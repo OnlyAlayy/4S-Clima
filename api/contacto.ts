@@ -96,7 +96,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td align="left" valign="middle">
-                    <img src="https://raw.githubusercontent.com/OnlyAlayy/4S-Clima/main/public/logo-clean.png" alt="4S Clima" width="54" height="55" style="display: block; border: 0; outline: none; text-decoration: none; width: 54px; height: 55px; max-width: 54px;" />
+                    <img src="https://cuatroeseclima.com/logo.png" alt="4S Clima" width="54" height="55" style="display: block; border: 0; outline: none; text-decoration: none; width: 54px; height: 55px; max-width: 54px;" />
                   </td>
                   <td align="right" valign="middle" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
                     <div style="font-size: 11px; font-weight: 700; color: #0284c7; text-transform: uppercase; letter-spacing: 0.5px;">Portal Web · Leads</div>
@@ -241,7 +241,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td align="left" valign="middle">
-                    <img src="https://raw.githubusercontent.com/OnlyAlayy/4S-Clima/main/public/logo-clean.png" alt="4S Clima" width="54" height="55" style="display: block; border: 0; outline: none; text-decoration: none; width: 54px; height: 55px; max-width: 54px;" />
+                    <img src="https://cuatroeseclima.com/logo.png" alt="4S Clima" width="54" height="55" style="display: block; border: 0; outline: none; text-decoration: none; width: 54px; height: 55px; max-width: 54px;" />
                   </td>
                   <td align="right" valign="middle" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
                     <div style="font-size: 11px; font-weight: 700; color: #0284c7; text-transform: uppercase; letter-spacing: 0.5px;">Ingeniería Térmica</div>
@@ -294,7 +294,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                     <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="font-size: 13px; color: #64748b; line-height: 1.6;">
                       <tr>
                         <td valign="middle" style="width: 24px; padding-bottom: 8px;">
-                          <img src="https://raw.githubusercontent.com/OnlyAlayy/4S-Clima/main/public/icons/pin.png" alt="Ubicación" width="16" height="16" style="display: block; border: 0; width: 16px; height: 16px;" />
+                          <img src="https://cuatroeseclima.com/icons/pin.png" alt="Ubicación" width="16" height="16" style="display: block; border: 0; width: 16px; height: 16px;" />
                         </td>
                         <td valign="middle" style="padding-bottom: 8px;">
                           <strong>Oficinas:</strong> Av. Córdoba 1432 8B, CABA, Buenos Aires
@@ -302,7 +302,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                       </tr>
                       <tr>
                         <td valign="middle" style="width: 24px; padding-bottom: 8px;">
-                          <img src="https://raw.githubusercontent.com/OnlyAlayy/4S-Clima/main/public/icons/mail.png" alt="Email" width="16" height="16" style="display: block; border: 0; width: 16px; height: 16px;" />
+                          <img src="https://cuatroeseclima.com/icons/mail.png" alt="Email" width="16" height="16" style="display: block; border: 0; width: 16px; height: 16px;" />
                         </td>
                         <td valign="middle" style="padding-bottom: 8px;">
                           <strong>Email:</strong> <a href="mailto:contacto@cuatroeseclima.com" style="color: #0284c7; text-decoration: none; font-weight: 600;">contacto@cuatroeseclima.com</a>
@@ -310,7 +310,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                       </tr>
                       <tr>
                         <td valign="middle" style="width: 24px; padding-bottom: 8px;">
-                          <img src="https://raw.githubusercontent.com/OnlyAlayy/4S-Clima/main/public/icons/globe.png" alt="Sitio Web" width="16" height="16" style="display: block; border: 0; width: 16px; height: 16px;" />
+                          <img src="https://cuatroeseclima.com/icons/globe.png" alt="Sitio Web" width="16" height="16" style="display: block; border: 0; width: 16px; height: 16px;" />
                         </td>
                         <td valign="middle" style="padding-bottom: 8px;">
                           <strong>Sitio Web:</strong> <a href="https://cuatroeseclima.com" style="color: #0284c7; text-decoration: none; font-weight: 600;">cuatroeseclima.com</a>
@@ -318,7 +318,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                       </tr>
                       <tr>
                         <td valign="middle" style="width: 24px;">
-                          <img src="https://raw.githubusercontent.com/OnlyAlayy/4S-Clima/main/public/icons/instagram.png" alt="Instagram" width="16" height="16" style="display: block; border: 0; width: 16px; height: 16px;" />
+                          <img src="https://cuatroeseclima.com/icons/instagram.png" alt="Instagram" width="16" height="16" style="display: block; border: 0; width: 16px; height: 16px;" />
                         </td>
                         <td valign="middle">
                           <strong>Instagram:</strong> <a href="https://instagram.com/cuatroeseclima" target="_blank" style="color: #0284c7; text-decoration: none; font-weight: 600;">@cuatroeseclima</a>
