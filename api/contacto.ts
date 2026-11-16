@@ -22,19 +22,19 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: 'El formato de correo electrónico no es válido.' })
     }
 
-    // 2. Conectar con Supabase
+    // 2. Conectar con Supabase (Uso de SUPABASE_ANON_KEY con RLS de mínimo privilegio)
     const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL
-    const supabaseServiceKey = 
-      process.env.SUPABASE_SERVICE_ROLE_KEY || 
+    const supabaseKey = 
       process.env.SUPABASE_ANON_KEY || 
+      process.env.SUPABASE_SERVICE_ROLE_KEY || 
       process.env.VITE_SUPABASE_ANON_KEY
 
-    if (!supabaseUrl || !supabaseServiceKey) {
+    if (!supabaseUrl || !supabaseKey) {
       console.error('Error: Faltan variables de entorno de Supabase en el servidor.')
       return res.status(500).json({ error: 'Error de configuración del servidor.' })
     }
 
-    const supabase = createClient(supabaseUrl, supabaseServiceKey, {
+    const supabase = createClient(supabaseUrl, supabaseKey, {
       auth: { persistSession: false, autoRefreshToken: false }
     })
 
