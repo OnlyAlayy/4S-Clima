@@ -47,10 +47,12 @@ export default function Navbar() {
           </div>
 
           {/* Centered Logo */}
-          <a href="#hero" className="flex flex-col flex-shrink-0 group items-center justify-center px-4">
-            <span className="font-sans text-2xl md:text-3xl font-black tracking-widest text-gray-900 group-hover:text-primary transition-colors uppercase">
-              4S CLIMA
-            </span>
+          <a href="#hero" className="flex items-center justify-center flex-shrink-0 group px-2 py-1">
+            <img 
+              src="/logo-clean.png" 
+              alt="4S CLIMA" 
+              className="h-14 md:h-16 w-auto object-contain transition-transform group-hover:scale-105 duration-200"
+            />
           </a>
 
           {/* Desktop Right Nav (flex-1 to balance the left side and keep logo centered) */}

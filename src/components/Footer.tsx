@@ -14,22 +14,18 @@ export default function Footer() {
         
         <div className="flex flex-col md:flex-row justify-between gap-16 md:gap-8 mb-8">
           
-          {/* Brand Logo (Imitating the bracket logo) */}
-          <div className="md:w-1/3 flex items-start justify-center md:justify-start">
-            <div className="relative inline-flex items-center justify-center p-6">
-              {/* Bracket effect */}
-              <div className="absolute top-0 left-0 w-8 h-8 border-t-[5px] border-l-[5px] border-primary"></div>
-              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-[5px] border-r-[5px] border-primary"></div>
-              
-              <div className="flex flex-col text-center px-4">
-                <span className="font-sans text-2xl md:text-3xl font-black tracking-[0.2em] text-gray-700 uppercase">
-                  4S CLIMA
-                </span>
-                <span className="font-sans text-[10px] font-bold tracking-[0.3em] text-gray-400 uppercase mt-2">
-                  Climatización
-                </span>
-              </div>
-            </div>
+          {/* Brand Logo */}
+          <div className="md:w-1/3 flex flex-col items-center md:items-start justify-center md:justify-start">
+            <a href="#hero" className="inline-block group">
+              <img 
+                src="/logo-clean.png" 
+                alt="4S CLIMA" 
+                className="h-20 w-auto object-contain transition-transform group-hover:scale-105 duration-200"
+              />
+            </a>
+            <p className="text-gray-400 text-xs font-medium mt-3 text-center md:text-left">
+              Soluciones integrales de climatización y ventilación.
+            </p>
           </div>
 
           {/* Links Columns */}
